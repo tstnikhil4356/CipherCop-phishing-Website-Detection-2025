@@ -16,10 +16,7 @@ A **hybrid AI system** that combines three powerful detection methods:
 2. **🧠 LLM Content Analysis** - Contextual understanding via Mistral
 3. **👁️ Computer Vision Similarity** - Brand impersonation detection
 
-## 🏗️ System Architecture
 
-```
-Input (URL/Image) → Processing → [ML + LLM + CV] → Ensemble → Final Verdict
 ```
 
 ## 🔄 Processing Flow
