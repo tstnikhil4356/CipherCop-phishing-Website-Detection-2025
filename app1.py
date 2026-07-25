@@ -3,7 +3,6 @@ import imagehash, cv2, numpy as np, pytesseract, re, os, time, base64, matplotli
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from selenium import webdriver
-from selenium.webdriver import Safari
 from selenium.webdriver.chrome.options import Options
 from rapidfuzz import process
 from urllib.parse import urlparse
