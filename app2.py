@@ -1,5 +1,6 @@
 import requests
-import ollama
+import os
+from groq import Groq
 from bs4 import BeautifulSoup
 import json
 import re
@@ -79,8 +80,10 @@ def extract_main_content(html):
     text = soup.get_text(" ", strip=True)
     return text
 
-# ---------- LLM Analysis (Ollama Mistral) ----------
-def analyze_with_ollama(content, model_name="mistral"):
+# ---------- LLM Analysis (Groq API) ----------
+client = Groq(api_key=os.environ["GROQ_API_KEY"])
+
+def analyze_with_ollama(content, model_name="llama-3.3-70b-versatile"):
     system_prompt = """You are an expert cybersecurity analyst. 
 Your task is to analyze the content of a website and determine if it is a scam, phishing attempt, or otherwise malicious.
 Respond STRICTLY in this JSON format:
@@ -94,22 +97,22 @@ Respond STRICTLY in this JSON format:
 """
     try:
         user_message = f"Analyze this website content:\n\n{content}"
-        response = ollama.chat(
+        response = client.chat.completions.create(
             model=model_name,
             messages=[
                 {'role': 'system', 'content': system_prompt},
                 {'role': 'user', 'content': user_message}
             ],
-            options={'temperature': 0.1}
+            temperature=0.1
         )
-        response_text = response['message']['content'].strip()
+        response_text = response.choices[0].message.content.strip()
         json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
         if json_match:
             return json.loads(json_match.group())
         else:
             return None
     except Exception as e:
-        print(f"❌ Error with Ollama: {e}")
+        print(f"❌ Error with Groq: {e}")
         return None
 
 # ---------- Hybrid Classification ----------
