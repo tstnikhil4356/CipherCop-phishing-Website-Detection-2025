@@ -1,0 +1,16 @@
+streamlit
+selenium
+scikit-learn
+lightgbm
+shap
+opencv-python-headless
+Pillow
+imagehash
+pytesseract
+beautifulsoup4
+rapidfuzz
+requests
+groq
+matplotlib
+numpy
+pandas
