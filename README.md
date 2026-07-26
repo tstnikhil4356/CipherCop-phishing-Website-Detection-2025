@@ -22,9 +22,6 @@ Each analysis completes in under 30 seconds with parallel execution:
 
 ## System Architecture
 
-<img src="assets/main.png" alt="System Architecture" width="600"/>
-
-<details>
 <summary>View Mermaid Source</summary>
 
 ```mermaid
