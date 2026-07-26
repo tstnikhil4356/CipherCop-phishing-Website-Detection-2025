@@ -99,6 +99,7 @@ flowchart TB
     classDef pipeline fill:#EF9A9A,stroke:#C62828,color:#000
     classDef output fill:#CE93D8,stroke:#6A1B9A,color:#000
 ```
+```
 </details>
 <hr style="border:1px solid #ccc; margin:30px 0;">
 
